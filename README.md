@@ -1,4 +1,4 @@
-<h2 align="center">Interface semelhante ao LinkedIn, em ReactJS</h2>
+<h2 align="center">Interface para lista de repositórios, em ReactJS</h2>
 
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/rlocatelli9/repolist-app">
@@ -42,10 +42,9 @@ Technologies used in the development of the project:
 - [react-confirm-alert](https://www.npmjs.com/package/react-confirm-alert)
 - [styled-components](https://www.npmjs.com/package/styled-components)
 
-
 ## 💻 Projeto
 
-Aaplicação do zero utilizando ReactJS.
+Aplicação do zero utilizando ReactJS.
 
 Nessa aplicação foi desenvolvido uma interface para adição de repositórios do github que julgar interessante e acompanhar as issues que estão abertas, utilizando React.
 
