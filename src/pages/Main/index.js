@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
-import { FaGithubAlt, FaInfoCircle, FaPlus, FaSpinner } from 'react-icons/fa';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
+import {
+  FaGithubAlt,
+  FaInfoCircle,
+  FaMinusCircle,
+  FaPlus,
+  FaSpinner,
+} from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Container from '../../components/Container';
 import api from '../../services/api';
@@ -58,6 +66,27 @@ export default class Main extends Component {
     });
   };
 
+  handleDelete = repo => {
+    confirmAlert({
+      title: 'Atenção!',
+      message: 'Você tem certeza que quer fazer isso?',
+      buttons: [
+        {
+          label: 'Sim',
+          onClick: () => {
+            const { repositories } = this.state;
+            this.setState({
+              repositories: repositories.filter(r => r.name !== repo),
+            });
+          },
+        },
+        {
+          label: 'Não',
+        },
+      ],
+    });
+  };
+
   render() {
     const { newRepo, repositories, loading } = this.state;
     return (
@@ -77,7 +106,7 @@ export default class Main extends Component {
             onChange={this.handleInputChange}
           />
 
-          <SubmitButton loading={loading}>
+          <SubmitButton loading={loading} title="Adicionar na lista">
             {loading ? (
               <FaSpinner color="#FFF" size={14} />
             ) : (
@@ -90,12 +119,21 @@ export default class Main extends Component {
           {repositories.map(repository => (
             <li key={repository.name}>
               <span>{repository.name}</span>
-              <Link
-                to={`/repository/${encodeURIComponent(repository.name)}`}
-                title="Veja os detalhes"
-              >
-                <FaInfoCircle size={25} />
-              </Link>
+              <div>
+                <Link
+                  to={`/repository/${encodeURIComponent(repository.name)}`}
+                  title="Veja os detalhes"
+                >
+                  <FaInfoCircle size={25} />
+                </Link>
+                <FaMinusCircle
+                  onClick={() => {
+                    this.handleDelete(repository.name);
+                  }}
+                  size={25}
+                  title="Remover da lista"
+                />
+              </div>
             </li>
           ))}
         </List>

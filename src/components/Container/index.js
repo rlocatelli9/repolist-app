@@ -17,6 +17,11 @@ const Container = styled.div`
       margin-right: 10px;
     }
   }
+
+  a#voltar {
+    text-decoration: none;
+    color: #7159c1;
+  }
 `;
 
 export default Container;

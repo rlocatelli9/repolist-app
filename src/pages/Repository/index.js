@@ -47,7 +47,7 @@ export default class Repository extends Component {
 
     return (
       <Container>
-        <Link to="/" title="Voltar aos repositórios">
+        <Link id="voltar" to="/" title="Voltar aos repositórios">
           <FaArrowLeft size={35} />
         </Link>
         <Owner>
